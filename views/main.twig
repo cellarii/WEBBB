@@ -1,0 +1,29 @@
+
+{% extends "__layout.twig" %}
+
+{% block content %}
+{% from 'macros.twig' import btn %}
+<div style="display: flex;">
+    {% for object in vasteras_area %}
+        <div class="block">
+            <div class="block-img">
+                <img src="{{ object.image }}" alt="" width="200px" height="150px">
+            </div>
+            <a href=""><button type="button" class="btn btn-primary">{{ object.title }}</button></a>
+            <div>
+                <a href="">Картинка</a>
+                <a href="">Описание</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{# <pre>
+    {{ dump(vasteras_area)}}
+</pre>
+<div class="list-group">
+{% for item in menu_items %}
+{% include "items.twig"%}
+{% endfor %}
+</div> #}
+
+{% endblock %}

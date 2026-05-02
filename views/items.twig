@@ -1,0 +1,6 @@
+{% from 'macros.twig' import btn %}
+<div class="list-group-item">
+    <h1>{{item.title}}</h1>
+        {{ btn("Картинка", "/" ~ item.url_title ~ "/image", true) }}
+        {{ btn("Описание", "/" ~ item.url_title ~ "/info", true) }}
+</div>
