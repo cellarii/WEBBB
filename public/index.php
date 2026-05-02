@@ -1,5 +1,6 @@
 <?php
 require_once '../vendor/autoload.php';
+require_once '../framework/autoload.php';
 require_once '../controllers/MainController.php';
 require_once '../controllers/NorthController.php';
 require_once '../controllers/NorthImageController.php';
@@ -16,29 +17,12 @@ $twig = new \Twig\Environment($loader, [
 ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-$url = $_SERVER["REQUEST_URI"];
-
 $context = [];
-$controller = new Controller404($twig);
 
 $pdo = new PDO("mysql:host=localhost;dbname=vasteras;charset=utf8", "root", "");
 
-if ($url == "/") {
-    $controller = new MainController($twig);
-} elseif (preg_match("#^/north/image#", $url)){
-    $controller = new NorthImageController($twig);
-} elseif (preg_match("#^/north/info#", $url)){
-    $controller = new NorthInfoController($twig);
-} elseif (preg_match("#^/north#", $url)) {
-    $controller = new NorthController($twig);
-} elseif (preg_match("#^/south/image#", $url)){
-    $controller = new SouthImageController($twig);
-} elseif (preg_match("#^/south/info#", $url)){
-    $controller = new SouthInfoController($twig);
-} elseif (preg_match("#^/south#", $url)) {
-    $controller = new SouthController($twig);
-}
-if ($controller) {
-    $controller->setPDO($pdo);
-    $controller->get();
-}
+$router=new Router($twig, $pdo);
+$router->add("/", MainController::class);
+$router->add("/north", NorthController::class);
+$router->add("/south", SouthController::class);
+$router->get_or_default(Controller404::class);

@@ -1,6 +1,6 @@
 <?php
 
-require_once "TwigBaseController.php";
+//require_once "TwigBaseController.php";
 
 class Controller404 extends TwigBaseController {
     public $title = "Страница не найдена";
