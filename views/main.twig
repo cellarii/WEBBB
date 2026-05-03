@@ -2,6 +2,27 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
+<div class="row d-flex">
+    {% for object in vasteras_area %}
+    <div class="col mb-4 d-flex align-items-stretch">
+        <div class="border p-2 d-flex flex-column justify-content-between w-100">
+            <div class="img-thumbnail mb-2" style="width: 100%; height: 200px; overflow:hidden">
+                <img src="{{ object.image }}" style="height: 100%; width: 100%; object-fit: cover;" alt="">
+            </div>
+            <div class="d-flex flex-column">
+                <a href="/vasteras-area/{{object.id}}" type="button" class="btn btn-primary mb-1">{{ object.title }}</a>
+                <div class="d-flex justify-content-center">
+                    <a class="me-3" href="/vasteras-area/{{object.id}}/image">Картинка</a>
+                    <a href="/vasteras-area/{{object.id}}/info">Описание</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{# {% block content %}
 {% from 'macros.twig' import btn %}
 <div style="display: flex;">
     {% for object in vasteras_area %}
@@ -25,5 +46,3 @@
 {% include "items.twig"%}
 {% endfor %}
 </div> #}
-
-{% endblock %}

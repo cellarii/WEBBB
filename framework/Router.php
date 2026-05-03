@@ -29,11 +29,11 @@ class Router{
 
     public function get_or_default($default_controller){
         $url=$_SERVER["REQUEST_URI"];
-
         $controller=$default_controller;
+        $matches=[];
 
         foreach($this->routes as $route){
-            if (preg_match($route->route_regexp, $url)){
+            if (preg_match($route->route_regexp, $url, $matches)){
                 $controller=$route->controller;
                 break;
             }
@@ -41,6 +41,7 @@ class Router{
 
         $controllerInstance=new $controller();
         $controllerInstance->setPDO($this->pdo);
+        $controllerInstance->setParams($matches);
         if ($controllerInstance instanceof TwigBaseController){
             $controllerInstance->setTwig($this->twig);
         }
