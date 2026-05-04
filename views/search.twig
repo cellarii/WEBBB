@@ -1,0 +1,19 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+<form action="">
+    <select name="type">
+        <option value="север" {% if type == 'север' %}selected{% endif %}>Север</option>
+        <option value="юг" {% if type == 'юг' %}selected{% endif %}>Юг</option>
+    </select>
+    <label>Название <input type="text" name="title"></label>
+
+    <button type="submit">Найти</button>
+</form>
+
+{% for obj in objects %}
+    <li>{{ obj.title }}</li>
+{% else %}
+    <p>Ничего не найдено</p>
+{% endfor %}
+{% endblock %}

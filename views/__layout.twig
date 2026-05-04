@@ -25,13 +25,16 @@
                     <a class="nav-link" href="/?type={{type.type}}">{{type.type|title}}</a>
                 </li>
             {% endfor %}
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/search">Поиск</a>
+            </li>
         </ul>
         </div>
     </div>
 </nav>
 
 
-<div style="margin: 10px;">
+<div style="margin: 30px;">
     {% block content %}{% endblock %}
 </div>
 </body>
