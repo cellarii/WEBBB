@@ -8,13 +8,16 @@
 
 <ul class="nav nav-pills" style="margin:10px;">
   <li class="nav-item">
-    {{ btn("Картинка", "/" ~ url_title ~ "/image", is_image, "warning") }}
+    {{ btn("Картинка", "/" ~ url_title ~ "?show=image", is_image, "warning") }}
   </li>
   <li class="nav-item">
-    {{ btn("Описание", "/" ~ url_title ~ "/info", is_info, "warning") }}
+    {{ btn("Описание", "/" ~ url_title ~ "?show=info", is_info, "warning") }}
   </li>
 </ul>
 
-{% block objectContent %}{% endblock %}
-
+{% if is_image %}
+  <img src="{{image}}" alt="" style="width: 100%; max-width: 500px; height: auto; border-radius: 55px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+{% elseif is_info %}
+  {{info}}
+{% endif %}
 {% endblock %}
