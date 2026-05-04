@@ -12,6 +12,7 @@ require_once "../controllers/Controller404.php";
 require_once "../controllers/ObjectController.php";
 require_once "../controllers/ImageController.php";
 require_once "../controllers/InfoController.php";
+require_once "../controllers/BaseAreaTwigController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 

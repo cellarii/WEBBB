@@ -20,12 +20,11 @@
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Главная</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/north">Север</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/south">Юг</a>
-            </li>
+            {% for type in types %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/?type={{type.type}}">{{type.type|title}}</a>
+                </li>
+            {% endfor %}
         </ul>
         </div>
     </div>

@@ -1,23 +1,22 @@
 <?php
-//require_once "TwigBaseController.php";
+require_once "BaseAreaTwigController.php";
 
-class MainController extends TwigBaseController {
+class MainController extends BaseAreaTwigController {
     public $title = "Главная";
     public $template = "main.twig";
     public function getContext() : array {
         $context = parent::getContext();
-        $context["menu_items"] = [
-            [
-                "title" => "Север",
-                "url_title" => "north"
-            ],
-            [
-                "title" => "Юг",
-                "url_title" => "south"
-            ]
-        ];
+        
 
-        $query = $this->pdo->query("SELECT * FROM vasteras_area");
+        if (isset($_GET['type'])){
+            $query=$this->pdo->prepare("SELECT * FROM vasteras_area WHERE type=  :type");
+            $query->bindValue('type', $_GET['type']);
+            $query->execute();
+        }
+        else {
+            $query = $this->pdo->query("SELECT * FROM vasteras_area");
+        }
+
         $context['vasteras_area'] = $query->fetchAll();
 
         return $context;
