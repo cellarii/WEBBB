@@ -7,12 +7,13 @@
         <option value="юг" {% if type == 'юг' %}selected{% endif %}>Юг</option>
     </select>
     <label>Название <input type="text" name="title"></label>
+    <label>Описание <input type="text" name="info"></label>
 
     <button type="submit">Найти</button>
 </form>
 
 {% for obj in objects %}
-    <li>{{ obj.title }}</li>
+    <a href="">{{ obj.title }}</a><br>
 {% else %}
     <p>Ничего не найдено</p>
 {% endfor %}
