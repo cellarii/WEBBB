@@ -8,6 +8,7 @@ require_once "../controllers/BaseAreaTwigController.php";
 require_once "../controllers/SearchController.php";
 require_once "../controllers/AreaObjectCreateController.php";
 require_once "../controllers/TypeCreateController.php";
+require_once "../controllers/AreaObjectDeleteController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -26,4 +27,5 @@ $router->add("/vasteras-area/(?P<id>\d+)", ObjectController::class);
 //$router->add("/search", SearchController::class);
 $router->add("/vasteras-area/create", AreaObjectTwigController::class);
 $router->add("/new-type/create", TypeCreateController::class);
+$router->add("/vasteras-area/(?P<id>\d+)/delete", AreaObjectDeleteController::class);
 $router->get_or_default(Controller404::class);
