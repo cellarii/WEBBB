@@ -28,4 +28,5 @@ $router->add("/vasteras-area/(?P<id>\d+)", ObjectController::class);
 $router->add("/vasteras-area/create", AreaObjectTwigController::class);
 $router->add("/new-type/create", TypeCreateController::class);
 $router->add("/vasteras-area/(?P<id>\d+)/delete", AreaObjectDeleteController::class);
+$router->add("/search", SearchController::class);
 $router->get_or_default(Controller404::class);

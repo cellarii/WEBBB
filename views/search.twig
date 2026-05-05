@@ -1,20 +1,45 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-<form action="">
-    <select name="type">
-        <option value="север" {% if type == 'север' %}selected{% endif %}>Север</option>
-        <option value="юг" {% if type == 'юг' %}selected{% endif %}>Юг</option>
-    </select>
-    <label>Название <input type="text" name="title"></label>
-    <label>Описание <input type="text" name="info"></label>
-
-    <button type="submit">Найти</button>
-</form>
-
-{% for obj in objects %}
-    <a href="">{{ obj.title }}</a><br>
-{% else %}
-    <p>Ничего не найдено</p>
-{% endfor %}
+    <h1>Поиск</h1>
+    <form action="" class="row g-4">
+        <div class="col-sm-3">
+        Тип
+        <br>
+        
+        <select class="form-control" name="type">
+            <option value="все">Все</option>
+            {% for type in types %}
+            <option value="{{ type.name }}" {% if selected_type == type.name %}selected{% endif %}>{{ type.name|title }}</option>  
+            {% endfor %}
+            
+        </select>
+        </div>
+        <div class="col-sm-3">
+        Название
+        <br>
+            <input type="text" class="form-control" name="title" value="{{ title }}">
+        </div>
+        <div class="col-sm-3">
+        Описание
+        <br>
+            <input type="text" class="form-control" name="full_description" value="{{ full_description }}">
+        </div>
+        <div class="col">
+        <br>
+        <button class="btn btn-primary" type="submit">Найти</button>
+        </div>
+       
+    </form>
+    <div class="col-sm-10" style="margin-top:1%;">
+    <ul class="list-group" >
+    {% for object in objects %}
+        
+        <li class = "list-group-item w-100">
+        <a href="/vasteras-area/{{object.id}}"> {{object.title}}</a>
+        </li>
+        
+    {% endfor %}
+    </ul>    
+    </div>
 {% endblock %}
