@@ -6,6 +6,13 @@
     {% for object in vasteras_area %}
     <div class="col mb-4 d-flex align-items-stretch">
         <div class="border p-2 d-flex flex-column justify-content-between w-100 position-relative">
+            <div class="position-absolute" style="left:4px; top:4px;">
+            <a href="/vasteras-area/{{ object.id }}/edit">
+            <button type="submit" class="btn btn-info">
+                    <i class ="fas fa-edit"></i>
+            </button>
+            </a>
+        </div>
             <div class="position-absolute" style="right: 4px; top: 4px">
                 <form action="/vasteras-area/{{object.id}}/delete" method="POST">
                     <button type="submit" class="btn btn-danger">
