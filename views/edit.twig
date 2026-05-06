@@ -24,9 +24,9 @@
         
         <div class="col-4">
             <label class="form-label">Тип</label>
-            <select class="form-control" name="type">
+            <select class="form-control" name="type_id">
                 {% for type in types %}
-                    <option value="{{ type.name }}" {% if type.name == object.type %}selected{% endif %}>
+                    <option value="{{ type.id }}" {% if type.id == object.type_id %}selected{% endif %}>
                         {{ type.name|title }}
                     </option>  
                 {% endfor %}
@@ -38,7 +38,6 @@
             {% if object.image %}
                 <img src="{{ object.image }}" style="max-width: 200px; margin-bottom: 10px;"><br>
             {% endif %}
-            <label class="form-label">Новое изображение</label>
             <input class="form-control" type="file" name="image">
         </div>
         

@@ -31,11 +31,6 @@ class Router{
         $url=$_SERVER["REQUEST_URI"];
         
         $path=parse_url($url, PHP_URL_PATH);
-        // echo $path;
-
-        // echo "<pre>";
-        // print_r($_GET);
-        // echo "</pre>";
 
         $controller=$default_controller;
         $matches=[];

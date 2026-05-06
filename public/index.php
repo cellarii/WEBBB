@@ -25,7 +25,6 @@ $pdo = new PDO("mysql:host=localhost;dbname=vasteras;charset=utf8", "root", "");
 $router=new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/vasteras-area/(?P<id>\d+)", ObjectController::class);
-//$router->add("/search", SearchController::class);
 $router->add("/vasteras-area/create", AreaObjectTwigController::class);
 $router->add("/new-type/create", TypeCreateController::class);
 $router->add("/vasteras-area/(?P<id>\d+)/delete", AreaObjectDeleteController::class);

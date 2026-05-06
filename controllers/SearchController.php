@@ -11,10 +11,11 @@ class SearchController extends BaseAreaTwigController{
         $title=isset($_GET['title']) ? $_GET['title'] : '';
         $description=isset($_GET['description']) ? $_GET['description'] : '';
         $sql = <<<EOL
-SELECT id, title
+SELECT vasteras_area.id, title
 FROM vasteras_area
+join area_type on type_id=area_type.id
 WHERE (:title = '' OR title like CONCAT('%', :title, '%'))
-    and ((type = :type) OR :type='все')
+    and ((name = :type) OR :type='все')
     and (:description='' OR info like CONCAT('%', :description, '%'))
 EOL;
     $query=$this->pdo->prepare($sql);

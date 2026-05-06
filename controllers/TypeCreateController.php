@@ -4,9 +4,7 @@ require_once "BaseAreaTwigController.php";
 class TypeCreateController extends BaseAreaTwigController{
     public $template="type_create.twig";
     public function get(array $context)
-    {
-        echo $_SERVER['REQUEST_METHOD'];
-        
+    {        
         parent::get($context);
     }
 

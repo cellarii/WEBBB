@@ -11,11 +11,10 @@
         </div>
     {% endif %}
     
-
     <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
         <div class="col-4">
             <label class="form-label">Название</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" required>
         </div>
         <div class="col-4">
             <label class="form-label">Краткое описание</label>
@@ -23,15 +22,15 @@
         </div>
         <div class="col-4">
             <label class="form-label">Тип</label>
-            <select class="form-control" name="type">
+            <select class="form-control" name="type_id">
                 {% for type in types %}
-                    <option value="{{ type.name }}">{{ type.name|title }}</option>
+                    <option value="{{ type.id }}">{{ type.name|title }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="mb-3">
-            <label for="formFile" class="form-label">Картинка</label>
-            <input class="form-control" type="file" id="formFile" name="image">
+            <label class="form-label">Картинка</label>
+            <input class="form-control" type="file" name="image" required>
         </div>
         <div class="col-12">
             <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5"></textarea>
