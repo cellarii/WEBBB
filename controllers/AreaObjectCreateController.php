@@ -2,7 +2,7 @@
 
 require_once "BaseAreaTwigController.php";
 
-class AreaObjectTwigController extends BaseAreaTwigController{
+class AreaObjectCreateController extends BaseAreaTwigController{
     public $template = "area_object_create.twig";
 
     public function get(array $context)
