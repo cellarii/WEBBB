@@ -16,6 +16,8 @@ abstract class BaseController {
     }
 
     public function process_responce(){
+        session_set_cookie_params(10*60*60);
+        session_start();
         $method = $_SERVER['REQUEST_METHOD'];
         $context=$this->getContext();
         if ($method=="GET"){

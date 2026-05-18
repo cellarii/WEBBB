@@ -3,6 +3,13 @@
 {% block content %}
 {% from 'macros.twig' import btn %}
 
+Сообщение из сессии: {{my_session_message}}<br>
+Последние сообщения:<br>
+{% for m in messages %}
+  {{m}}<br>
+{% endfor %}
+<hr>
+
 <h1>{{title}}</h1>
 {{description}}
 

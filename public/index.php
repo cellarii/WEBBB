@@ -11,6 +11,7 @@ require_once "../controllers/TypeCreateController.php";
 require_once "../controllers/AreaObjectDeleteController.php";
 require_once "../controllers/AreaObjectUpdateController.php";
 require_once "../middlewares/LooginRequiredWiddleware.php";
+require_once "../controllers/SetWelcomeController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -24,6 +25,7 @@ $context = [];
 $pdo = new PDO("mysql:host=localhost;dbname=vasteras;charset=utf8", "root", "");
 
 $router=new Router($twig, $pdo);
+$router->add("/set-welcome/", SetWelcomeController::class);
 $router->add("/", MainController::class);
 $router->add("/vasteras-area/(?P<id>\d+)", ObjectController::class);
 $router->add("/search", SearchController::class);

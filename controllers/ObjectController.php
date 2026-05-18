@@ -13,7 +13,9 @@ class ObjectController extends BaseAreaTwigController{
         $data=$query->fetch();
         $context['description']=$data['description'];
         $context['url_title'] = "vasteras-area/" . $data['id'];
-
+        
+        $context['my_session_message'] = $_SESSION['welcome_message'];
+        
         $show=$_GET['show'] ?? '';
 
         if ($show=='image'){
@@ -28,6 +30,8 @@ class ObjectController extends BaseAreaTwigController{
             $context['is_image']=false;
             $context['is_info']=false;
         }
+
+        $context["messages"]=isset($_SESSION['messages']) ? $_SESSION['messages'] : "";
 
         return $context;
     }
